@@ -1,0 +1,73 @@
+Project 3: Yimacs Search and Replace in a Large Text File
+
+Name: Yongeon Lee
+ID: 20170476
+
+COMPILE CODE
+g++ avl_tree.cpp yimacs_avl.cpp -std=c++11 -o test_avl 
+g++ rb_tree.cpp yimacs_rb.cpp -std=c++11 -o test_rb
+
+
+I input the big.txt which is e-book novel "The Adventures of Sherlock Holmes"
+(6MB, 128457 lines, 1095695 words)
+Sure, i attached big.txt at tar.gz
+
+<< output - only insertion of the big.txt into each tree>>
+
+./test_avl big.txt output
+Running Time: 191 s.
+
+./test_rb big.txt output
+Running Time: 182 s.
+
+
+< Comparison between AVL tree & RB tree >
+
+1. Search
+AVL tree has more rigid depth rule because avl tree can't have height difference over than 1.
+But RB tree can have heigth difference over than 1 because of red node. so the search depth of
+each tree, AVL tree is slightly have more time efficiency.
+
+2. Insertion
+
+Both has O(logn) time complexity. But RB tree has less rotation time than AVL tree. Specifically,
+in AVL tree, when the number of rotation when the balacance property is broken, the worst case number
+of balacance(n) function call is O(logn). Because unbalance can go up until reaching the root. However,
+in RB tree, when the double red occur , rotation only occur when the silbing of its inserted node is red.
+Therefore, less instruction made by RB tree insertion than AVL tree insertion. To be more specified I actually
+check the number of rotation in each tree.
+
+./test_avl big.txt output
+Rotation: 40047
+
+./test_rb big.txt output
+Rotation: 32939
+
+
+As expected, AVL tree have almost 7000 times more rotation than RB tree. So I think about 10seconds of small difference
+came from this rotation number difference of each tree.
+
+In conclusion, for searching, the AVL is faster than RB. But for insertion, the RB is fasterr than AVL because of rotation difference.
+Therefore, I think reason that both algorithm doesn't have much time difference is that there is a tradeoff between searching and insertion.
+
+<< output - while replacing the word from one to another >>
+./test_avl big.txt output
+R: replace Q: quit this program
+R to toto
+Time : 7s.
+
+./test_rb big.txt output
+R: replace Q: quit this program
+R to toto
+Time : 7s.
+
+3. Deletion & Replace
+
+For the same reason in insertion, I also think that RB is similar to AVL. Also, i implement replace to run only at the line
+which certain word(i like to replace) is in. For example, if to is in the line 1, 3, 4, the replace function only run at 1, 3, 4.
+So, the time difference should be almost same.
+
+
+
+
+

@@ -1,0 +1,106 @@
+### Project 2b -Message receiver implementation ###
+
+The algorithm of single receiver and double receiver is exactly same.
+Only the data sturcture algorithm is different which results in time difference.
+I divided situation into big 5 case.
+
+## Time comparison ##
+About input_large,
+
+In singly linked-list,
+// OUTPUT
+- Message 1
+word(1,1)
+word(1,2)
+word(1,3)
+...
+...
+...
+word(399,397)
+word(399,398)
+word(399,399)
+- End Message 399
+
+Running Time: 97 s.
+//
+
+In doubly linked-list,
+
+// OUTPUT
+
+- Message 1
+word(1,1)
+word(1,2)
+word(1,3)
+...
+...
+...
+word(399,397)
+word(399,398)
+word(399,399)
+- End Message 399
+
+Running Time: 120 s.
+//
+
+Singly linked-list is faster than doubly linked-list
+Since the input_large(Given in project file) is already sorted in incremental order,
+only list_insert_after(search,node) runs in my both receiver program. The order of this
+function is both O(1), so the difference comes from number of instructions.
+While singly linked-list only have to change the next pointer, doubly linked-list have
+to change two variables the next and prev pointer.
+So in concluson, input_large is the best case in singly linked-list receiver program which
+can be faster than doubly-linked list.
+
+In my single_list::list_insert_before function, the worst case is O(n) due to while loop.
+But in double_list insert_before function, the worst cae is O(1).
+So, we can think of another input test case of singly linked list is much slower than double linked list.
+So i made a input with total random order that insert_before is much frequently used than input_large.
+
+Shell command
+shuf input_large > input_shuffle
+./test_single input_shuffle output_single
+./test_double input_shuffle output_double
+
+I attached the input_shuffle in file
+
+In output_single,
+
+- Message 1
+word(1,1)
+word(1,2)
+word(1,3)
+...
+...
+...
+word(399,397)
+word(399,398)
+word(399,399)
+- End Message 399
+
+Running Time: 303 s.
+
+
+In output_double,
+
+- Message 1
+word(1,1)
+word(1,2)
+word(1,3)
+...
+...
+...
+word(399,397)
+word(399,398)
+word(399,399)
+- End Message 399
+
+Running Time: 194 s.
+
+It is much more faster than singly linked-list.
+Single linked-list goes through while loop from the first node to find the previous node of given node,
+while doubly linked-list have prev node pointer that can directly find pointer of the previous node.
+Function difference result in huge time difference.
+
+
+

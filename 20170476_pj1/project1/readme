@@ -1,0 +1,56 @@
+##########################################
+## Project 1: Student Management System ##
+##########################################
+
+Name: Yongeon Lee
+Student ID: 20170476
+
+student.h file:
+
+ 1. Student class
+    # public
+    get_name(): get private variable _name
+    get_id(): get private variable _stunum
+    get_lab(): virtual function
+               if object is Grad_Student, return _lab_name
+               if object is Undergrad_Student, return empty string
+               Since, empty input from user is not allowed.
+    get_fresh(): virtual function
+               if object is Grad_Student, return integer -1
+               if object is Undergrad_Student, return _freshmen_class
+               Since, negative integer input from user is not allowed.
+    friend class Grad_Student and Undergrad_Student to access private variables in print_all()
+ 
+
+2. Manager class
+   # public
+   1. Student double pointer that points to array of Student class pointers.
+   2. Variable count that counts the total number of students registered.
+   3. Manager constructor makes student class pointer array size of 300.
+   4. Manager destructor that when main function return, the remaining dynamically allocated
+      memory can be delete so that no memory leak occurs
+
+student.cpp file:
+
+   1. string headerfile, use loads of fuctions to handling string
+   2. limits headerfile to handling input from users
+   3. cctype headerfile to use isspace, isalpha, isdigit
+
+ compare_student function
+   : First, dynamically allocate the object that has argument information
+     compare two object, one in stu array, another in newly created object.
+     Using == operator (overloaded), compare two object
+
+main.cpp file:
+
+   input format: one by one
+   Name -> Student ID -> Lab Name / Class
+   There should be always input, no input is not allowed.
+   First input, should be only 1 character.
+   Second input, whether 0 or 1, only allow two integer 0 and 1.
+   Name input = only string that contains alphabets and spaces
+   Student ID input = only integer that no spaces allowed
+   Lab name input = only string that contains alphabets and spaces.
+   Freshmen class input = only integer that no spaces allowed.
+   Index input = only integer that no spaces allowed.
+

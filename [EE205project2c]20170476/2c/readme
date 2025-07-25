@@ -1,0 +1,24 @@
+## Project 2c - iterator implementation ##
+
+The data structure used in this program is doubly linked-list with exactly
+same algorithm making packet.
+
+There are 4 types of iterator operators, pre-increment ++/--, !=, ==, *(reference)
+
+First, pre-increment ++/--
+Change the Iter class memeber variable "node" to next(or prev) node pointer
+then return this pointer which points to itself.
+
+Second, !=/==
+Compare the Iter class member variable "node" with one another.
+if same, return true. Otherwise return false.
+
+Lastly, reference *
+Get the data1 variable of that node. Since this program only need the first Message
+number, just get data1 variable is enough.
+
+I specified the
+value_type, reference, pointer, difference_type, iterator_category.
+Also as i mentioned, this program only need first int varaible in node.
+So, iterator with only work with int varaiable is enough in this program.
+

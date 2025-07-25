@@ -1,0 +1,32 @@
+## ASSIGNMENT 4 ##
+Name: yongeon lee
+Student ID: 20170476
+
+
+PLEASE USE eelab5.kaist.ac.kr, this makes compile error in eelab6.kaist.ac.kr. Please use more updated g++ compiler.
+About task2
+
+I've implement shortestpath algorithm using Dijkstra and MST with KrusKal algorithm.
+First, for the Dijkstra algorithm, i use priority queue to pop out the minimum value of certain node.
+I implement the custom comparator for priority queue which is implemented in ADT_graph.h. I overloaded () bool operator by comparing two node_value of each node.
+When print out the path from source to destination, i recursively call from the destination node to source node by using parent variable at node class.
+This parent variable only change when the incident node change the value of node. This means that parent is pointing to the shortest path node, and by using this we can trace
+back from the destination to the source.
+Plus, there is some challenging case when the graph is not connected and two node at different tree is given. By just checking the parent of the node, if parent of the node is NULL, it
+can be said that there is no path from the source.
+
+Next, for the Kruskal algorithm, i use custom set data structure which is Disjoint Set implementation, and also priority queue to store edge.
+I also overloaded () bool operator by first comparing the edge value and if it is same, comparing alphabetical order of endVertices.
+I define mySet class in ADT_Graph.h. This mySet class have two major variable, which is parent and rank. You can consider that parent is the kind
+of identity number of each subset. This class has 2 major member function and constructor.
+"parent" variable is the vector that contain the pair of int, which represents the subset number, and ADT_Node pointer, which represents the elements inside the subset.
+
+First, constructor initialize the total set of vertices. Constructor initialize the parent vector to have int variable have vector index number, and each vector has
+distinct ADT_Node pointer. And rank vector is initialized to 0.
+
+Next, the find function is the function that finding the subset number of given ADT_Node pointer. so it recursively find the root subset, which means subset number is same as its index.
+Then, return the subset number of the root subset.
+
+Finally, the set_union function is the function that union the two different subset with the different subset number. At this situation, the rank vector plays an important role.
+To balance the subset, the subset that small rank absorbs into subset thaht have bigger rank. if each subset rank is same, i just increment rank as 1 and union two subset.
+
